@@ -34,16 +34,17 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <div >
+            <div id="background" >
                 <Nav />
                 <Container>
                     <Row>
-                        <Col size="lg-3 md-12 sm-12 xs-12">
+                        <Col size="lg-12 md-12 sm-12 xs-12">
                             <StockList stocks={this.state.stocks} />
                         </Col>
+                        </Row>
+                        <Row>
                         <Col size="lg-9 md-12 sm-12 xs-12">
                             <Card1 />
-                            <Card2 />
                         </Col>
                     </Row>
                 </Container >

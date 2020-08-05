@@ -1,6 +1,9 @@
 .lessonTitle {
-    font-weight: "bolder";
-    text-align: center; 
-    padding: "2rem";
-    font-size: "4rem"
+  font-weight: "bolder";
+  text-align: center;
+  padding: "2rem";
+  font-size: "4rem";
+}
+#background {
+  background-color: #C0C0C0;
 }

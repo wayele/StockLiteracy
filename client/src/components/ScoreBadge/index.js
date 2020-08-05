@@ -30,9 +30,9 @@ function ScoreBadge(props) {
     return (
 
         <>
-            {props.scores.map((score, i) => (
-                <Badge id="scoreBadge" key={score.id} pill>Stock {[i + 1]} Performance: ${parseFloat(score).toFixed(2)}</Badge>
-            ))}
+          
+                <Badge id="scoreBadge">Your Game Score: {totalScore}</Badge>
+        
         </>
     );
 }

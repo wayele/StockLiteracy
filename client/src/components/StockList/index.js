@@ -4,6 +4,7 @@ import {
   ListGroup,
   ListGroupItem,
   Button,
+  ButtonGroup,
   Row,
   Modal,
   ModalHeader,
@@ -19,6 +20,7 @@ import { Bar, Line, Pie } from "react-chartjs-2";
 function StockList(props) {
   const [selectStock, setSelectStock] = useState([]);
   const [chartData, setChartData] = useState([]);
+  const [scoreData, setScoreData] = useState([])
   const onCheckboxBtnClick = (selected) => {
     const index = selectStock.indexOf(selected);
     if (index < 0) {
@@ -82,72 +84,60 @@ function StockList(props) {
             historical: stock.historical,
           };
         });
+        
         setChartData(newChartData);
       });
   };
   const clearStocks = (event) => {
     event.preventDefault();
     setSelectStock([]);
+    setChartData([])
     API.resetStocks().then((res) => {
       console.log(res.data);
     });
   };
-  // wubUpdates
-  // const populatedStocks = (event) => {
-  //  event.preventDefault();
-  //  API.getPopulated()
-  //   .then((res) => console.log(res.data));
-  // }
-  // Jason trying to create score
-  // let score = 0;
+  
   let scoreArray = [];
   selectStock.map((stock) =>
     scoreArray.push([parseFloat(stock.performance).toFixed(2)])
   );
-  // console.log("this is the score array:" + scoreArray);
-  // const totalScore = array.reduce(function (accumulator, scoreArray) {
-  //  return scoreArray
-  // }, 0);
-  const totalScore = scoreArray.reduce((a, b) => a + b, 0);
-  // const totalScore = scoreArray.reduce(
-  //  (previousScore, currentScore, index) => previousScore + currentScore,
-  //  0);
-  // console.log("This is the total SCOREEEEEEE: " + totalScore);
+
+  
   return (
     <Container>
       <h2 style={listHeader}>STOCK LIST</h2>
       <p style={listHeaderP}>Do your research, pick 5, and submit!</p>
       <Row>
-        <Col className="scrollable" id="stockbox" lg="3" xs="12" md="3" s="12">
-          <ListGroup className="flex-column nav" style={well}>
+        <Col lg="3" xs="12" md="3" s="12">
+          <ListGroup
+            className="flex-column nav"
+            className="scrollable"
+            style={well}
+          >
             {props.stocks.map((stock) => (
-              <>
-                <ListGroupItem key={stock} className="justify-content-between">
-                  {stock.symbol}
+              <ListGroupItem key={stock} className="justify-content-between">
+                {stock.symbol}
+                <ButtonGroup id="buyBtn">
                   <Button
-                    id="buyBtn"
-                    className="float-right"
                     outline
                     color="success"
                     onClick={() => onCheckboxBtnClick(stock)}
                     active={selectStock.includes(stock)}
                   >
                     Buy
-         </Button>
+                  </Button>
                   <Button
                     key={stock}
-                    className="float-right"
-                    id="infoBtn"
                     outline
                     color="secondary"
                     onClick={toggle}
                   >
                     Info
-         </Button>
+                  </Button>
                   <Modal key={stock} isOpen={modal} toggle={toggle}>
                     <ModalHeader key={stock} toggle={toggle}>
                       Information
-          </ModalHeader>
+                    </ModalHeader>
                     <ModalBody key={stock}>
                       {stock.symbol}
                       <br></br>
@@ -155,13 +145,32 @@ function StockList(props) {
                       {stock.description}
                       <br></br>
                       <br></br>
-           Price: ${stock.historical[0].open}
+                      Price: ${stock.historical[0].open}
                     </ModalBody>
                   </Modal>
-                </ListGroupItem>
-              </>
+                </ButtonGroup>
+              </ListGroupItem>
             ))}
           </ListGroup>
+          <ButtonGroup id="underButtons">
+            <Button
+              onClick={clearStocks}
+              className="float"
+              outline
+              color="secondary"
+            >
+              Reset
+            </Button>
+
+            <Button
+              onClick={submitStocks}
+              className="float"
+              outline
+              color="success"
+            >
+              Submit
+            </Button>
+          </ButtonGroup>
         </Col>
         <Col lg="9" xs="12" md="9" s="12">
           <Jumbotron>
@@ -208,50 +217,13 @@ function StockList(props) {
                   }}
                 />
               )}
+              <div id="scoreBadgeDiv">
+                <ScoreBadge scores={scoreArray}></ScoreBadge>
+              </div>
             </div>
           </Jumbotron>
         </Col>
       </Row>
-      <Col>
-        <Row>
-          <Col>
-            <Button
-              id="resetBtn2"
-              onClick={clearStocks}
-              className="float"
-              outline
-              color="secondary"
-            >
-              Reset
-      </Button>
-          </Col>
-          <Col>
-            <Button
-              id="submitBtn2"
-              onClick={submitStocks}
-              className="float"
-              outline
-              color="success"
-            >
-              Submit
-      </Button>
-          </Col>
-          {/* <Col>
-      <Button onClick={populatedStocks}>Populate</Button>
-     </Col> */}
-        </Row>
-        <Row>
-          <Col>
-            <div id="scoreBadgeDiv">
-              <ScoreBadge scores={scoreArray}></ScoreBadge>
-            </div>
-          </Col>
-        </Row>
-      </Col>
-      <Col>
-        {/* <Card2> */}
-        {/* </Card2> */}
-      </Col>
     </Container>
   );
 }
