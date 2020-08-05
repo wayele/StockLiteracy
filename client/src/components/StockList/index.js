@@ -173,10 +173,10 @@ function StockList(props) {
           </ButtonGroup>
         </Col>
         <Col lg="9" xs="12" md="9" s="12">
-          <Jumbotron>
+          <Jumbotron id ="chartCont">
             <div className="chart">
               {chartData[0] && (
-                <Line
+                <Line id= "chart"
                   data={{
                     datasets: chartData.map((c) => ({
                       label: c.symbol,
@@ -207,7 +207,7 @@ function StockList(props) {
                   options={{
                     title: {
                       display: true,
-                      text: "Trend",
+                      text: "Your Selections",
                       fontSize: 25,
                     },
                     legend: {
