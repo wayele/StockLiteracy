@@ -6,7 +6,7 @@ import {
     FormGroup, Label, Input,
     Button
 } from 'reactstrap';
-import "./style.css";
+import Background from "../Background";
 
 
 class Login extends Component {
@@ -47,8 +47,9 @@ class Login extends Component {
     render() {
 
         return (
-            <Container id="login" className="App">
-                <h2>Log In</h2>
+            <Background>
+            <Container id="login" className="App" style={{fontFamily: "Georgia", color: "rgb(0, 195, 255)", fontSize: 30}}>
+                <h2 style={{fontFamily: "Georgia", fontSize: 75}}>Log In</h2>
                 <br></br>
                 <Form className="form">
                     <Col>
@@ -59,6 +60,7 @@ class Login extends Component {
                                 name="username"
                                 id="username"
                                 placeholder="Your Username Here"
+                                style={{width: "35%"}}
                                 value={this.state.username}
                                 onChange={this.handleInputChange}
                             />
@@ -72,15 +74,18 @@ class Login extends Component {
                                 name="password"
                                 id="examplePassword"
                                 placeholder="********"
+                                style={{width: "35%"}}
                                 value={this.state.password}
                                 onChange={this.handleInputChange}
                             />
                         </FormGroup>
+                        <Button onClick={this.handleClickSubmit}>Submit</Button>
+                        <p>Not a member? <Link to="/signup" style={{background: "rgba(148, 230, 225, 0.589)", color: "white"}}><span aria-hidden="true"></span> Signup here</Link></p>
                     </Col>
-                    <Button onClick={this.handleClickSubmit}>Submit</Button>
-                    <p>Not a member? <Link to="/signup"><span aria-hidden="true"></span> Signup here</Link></p>
+                    
                 </Form>
             </Container>
+            </Background>
         );
     }
 }

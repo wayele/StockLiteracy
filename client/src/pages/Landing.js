@@ -7,7 +7,7 @@ import Background from "../components/Background";
 
 function Landing() {
         return (
-            <div className="body" style={{backgroundColor: "rgb(0, 195, 255)"}}>
+            <div className="body">
                 <Background>
                 <div className="container">
                     <h1 className="header" style={{fontFamily: "Georgia", fontSize: 70, textAlign: "center", color: "rgb(0, 195, 255)"}}>Stock Market Literacy</h1>
