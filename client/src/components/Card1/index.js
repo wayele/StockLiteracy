@@ -1,9 +1,8 @@
 import React from 'react';
 import {
-    Card, Button, CardHeader, CardFooter, CardBody,
-    CardTitle, CardText
+    Card, CardBody,
+    CardHeader
 } from 'reactstrap';
-// import TrashBtn from "../TrashBtn";
 import "./style.css";
 
 
@@ -15,10 +14,14 @@ const Card1 = (props) => {
     return (
         <div>
             <Card className="card1" style={well}>
-                {/* <CardHeader>Header</CardHeader> */}
+                <CardHeader>Current Market News</CardHeader>
                 <CardBody>
-                    <CardTitle>Special Title Treatment</CardTitle>
-                    <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                        <iframe id="inlineFrameExample"
+                            title="Inline Frame Example"
+                            width="100%"
+                            height="100%"
+                            src="https://www.bloomberg.com/live/us">
+                        </iframe>
                 </CardBody>
             </Card>
         </div>
