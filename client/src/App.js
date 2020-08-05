@@ -5,6 +5,7 @@ import Signup from "./components/SignupForm";
 // import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 // import Nav from "./components/Nav";
+import Landing from "./pages/Landing";
 
 // Jason's edits for now: comment out all of returned JSX, render page 'Main' components working on
 // import them here:
@@ -19,7 +20,7 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route exact path={["/", "/login", "/logout"]}>
+          <Route exact path="/login">
             <Login setUser={setUser} />
           </Route>
           <Route exact path="/dashboard">
@@ -28,7 +29,9 @@ function App() {
           <Route exact path="/signup">
             <Signup />
           </Route>
-
+          <Route exact path={["/", "/landing"]}>
+            <Landing />
+          </Route>
           <Route exact path="/learn">
             <Education />
           </Route>

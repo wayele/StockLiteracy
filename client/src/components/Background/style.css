@@ -1,0 +1,13 @@
+body, html {
+    height: 100%;
+    }
+    .bg {
+    background-image: url("./stone.jpg");
+    height: 140vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    }
