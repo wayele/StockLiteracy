@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import EduCard from '../components/EduCard'
 import { Container, Row, Col } from 'reactstrap';
 import API from '../utils/API';
+import NavBar from "../components/NavBar"
 
 class Education extends Component {
 
@@ -21,11 +22,12 @@ class Education extends Component {
     render() {
         return (
             <div>
+                <NavBar />
                 <h1 className="lessonTitle" style={{
                     fontWeight: "bolder",
                     textAlign: "center",
                     padding: "2rem",
-                    fontSize: "4rem"
+                    fontSize: "2.5rem"
                 }}>
                     BEGIN YOUR STOCK LITERACY JOURNEY HERE!</h1>
                 <Container fluid>
