@@ -1,0 +1,26 @@
+.eduCard {
+    position: relative;
+    width: 30rem;
+    height: 30rem;
+    text-align: center;
+    justify-content: center;
+    border: 2px solid whitesmoke;
+    padding: 2px;
+    margin: 1px;
+}
+.eduCard-title {
+    text-transform: uppercase;
+    color: aliceblue;
+    font-size: 4rem;
+    font-weight: bold;
+    /* padding: 5rem 0; */
+}
+
+/* .card-container {
+    position: relative;
+    overflow-wrap: normal;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+} */
+

@@ -1,0 +1,17 @@
+.navstyle{
+    background:linear-gradient(
+        45deg,
+        rgb(0, 195, 255),
+        rgb(117, 142, 165)
+    );
+    margin-bottom: 10px;
+}
+
+
+#navBadge{
+    background:linear-gradient(
+        45deg,
+        rgb(71, 179, 71),
+        rgb(238, 229, 229)
+    );
+}
