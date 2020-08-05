@@ -5,34 +5,14 @@ import "./style.css";
 
 function ScoreBadge(props) {
 
-
-    let scoreIntArray = [];
     let newScores = props.scores;
-
-    newScores.map((newScore) => scoreIntArray.push([newScore]));
-    console.log("this is the scoreIntArray:" + scoreIntArray);
-
-
-    // function scoreConvert() {
-    //     newScores.forEach(score => {
-    //         parseInt(score);
-    //         scoreIntArray.push(([score]))
-    //     });
-    // };
-
-    const totalScore = scoreIntArray.reduce(
+    const totalScore = parseFloat(newScores.reduce(
         (prevValue, currentValue) => prevValue - (-currentValue),
-        0);
-
-    console.log("This is the total Score from badge component:" + totalScore);
-
+        0)).toFixed(2);
 
     return (
-
         <>
-          
-                <Badge id="scoreBadge">Your Game Score: {totalScore}</Badge>
-        
+            <Badge id="scoreBadge">Your Game Score: ${totalScore}</Badge>
         </>
     );
 }

@@ -19,7 +19,7 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route exact path={["/", "/login"]}>
+          <Route exact path={["/", "/login", "/logout"]}>
             <Login setUser={setUser} />
           </Route>
           <Route exact path="/dashboard">

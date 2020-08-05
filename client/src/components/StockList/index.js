@@ -15,12 +15,12 @@ import {
 import "./style.css";
 import API from "../../utils/API";
 import ScoreBadge from "../ScoreBadge";
-import Card2 from "../Card2";
-import { Bar, Line, Pie } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 function StockList(props) {
   const [selectStock, setSelectStock] = useState([]);
   const [chartData, setChartData] = useState([]);
-  const [scoreData, setScoreData] = useState([])
+  const [showScore, setShowScore] = useState(false);
+
   const onCheckboxBtnClick = (selected) => {
     const index = selectStock.indexOf(selected);
     if (index < 0) {
@@ -30,10 +30,7 @@ function StockList(props) {
     }
     setSelectStock([...selectStock]);
   };
-  // modal stuff
-  // const {
-  //  className
-  // } = props;
+
   const [modal, setModal] = useState(false);
   const toggle = (props) => {
     console.log("TOGGLE:" + props);
@@ -46,19 +43,20 @@ function StockList(props) {
   // CSS for list header
   const listHeader = {
     fontWeight: "550",
+    fontFamily: "Georgia",
+    color: "rgb(37, 28, 28)",
     textAlign: "center",
-    fontSize: "15px",
+    fontSize: "25px",
     backgroundColor: "opaque",
   };
   const listHeaderP = {
     fontWeight: "550",
     textAlign: "center",
-    fontSize: "12px",
-    textStyle: "italic",
+    fontFamily: "Georgia",
+    fontSize: "20px",
     backgroundColor: "opaque",
   };
-  // const chartData = []
-  // Changed to take whole stock object rather than just the object id
+
   const submitStocks = (event) => {
     event.preventDefault();
     const stockIds = [];
@@ -84,8 +82,9 @@ function StockList(props) {
             historical: stock.historical,
           };
         });
-        
         setChartData(newChartData);
+      }).then(() => {
+        setShowScore(!showScore);
       });
   };
   const clearStocks = (event) => {
@@ -96,13 +95,13 @@ function StockList(props) {
       console.log(res.data);
     });
   };
-  
+
   let scoreArray = [];
   selectStock.map((stock) =>
     scoreArray.push([parseFloat(stock.performance).toFixed(2)])
   );
 
-  
+
   return (
     <Container>
       <h2 style={listHeader}>STOCK LIST</h2>
@@ -207,7 +206,7 @@ function StockList(props) {
                   options={{
                     title: {
                       display: true,
-                      text: "Trend",
+                      text: "Your Stocks",
                       fontSize: 25,
                     },
                     legend: {
@@ -217,9 +216,9 @@ function StockList(props) {
                   }}
                 />
               )}
-              <div id="scoreBadgeDiv">
+              {showScore && <div id="scoreBadgeDiv">
                 <ScoreBadge scores={scoreArray}></ScoreBadge>
-              </div>
+              </div>}
             </div>
           </Jumbotron>
         </Col>

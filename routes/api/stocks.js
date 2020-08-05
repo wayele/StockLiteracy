@@ -17,14 +17,4 @@ router
   .route("/buy")
   .put(userController.update)
 
-// to buy buy id??
-// router
-//   .route("/buy/:id")
-//   .put(userController.update)
-
-// router
-//   .route("/populated")
-//   .get(stockController.populate)
-
-
 module.exports = router;
