@@ -9,18 +9,21 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  Jumbotron,
   Container,
   Card
 } from "reactstrap";
-import "./style.css";
 import API from "../../utils/API";
 import ScoreBadge from "../ScoreBadge";
 import { Line } from "react-chartjs-2";
+import "./style.css";
+
 function StockList(props) {
+  console.log(props)
   const [selectStock, setSelectStock] = useState([]);
   const [chartData, setChartData] = useState([]);
   const [showScore, setShowScore] = useState(false);
+  const [modal, setModal] = useState(false);
+  const [stockInfo, setStockInfo] = useState(null);
 
   const onCheckboxBtnClick = (selected) => {
     const index = selectStock.indexOf(selected);
@@ -32,12 +35,18 @@ function StockList(props) {
     setSelectStock([...selectStock]);
   };
 
-  const [modal, setModal] = useState(false);
-  const toggle = (props) => {
-    console.log("TOGGLE:" + props);
+
+  const toggle = () => {
+    console.log("TOGGLE")
+    // console.log(props);
     setModal(!modal);
   };
 
+  const handleInfo = (stock) => {
+    console.log(stock);
+    setStockInfo(stock);
+    toggle();
+  }
 
   // CSS for shadow effect on card
   const well = {
@@ -94,6 +103,7 @@ function StockList(props) {
     event.preventDefault();
     setSelectStock([]);
     setChartData([])
+    setShowScore(!showScore)
     API.resetStocks().then((res) => {
       console.log(res.data);
     });
@@ -117,7 +127,7 @@ function StockList(props) {
             style={well}
           >
             {props.stocks.map((stock) => (
-              <ListGroupItem key={stock} className="justify-content-between">
+              <ListGroupItem key={stock.symbol} className="justify-content-between">
                 {stock.symbol}
                 <ButtonGroup id="buyBtn">
                   <Button
@@ -129,30 +139,32 @@ function StockList(props) {
                     Buy
                   </Button>
                   <Button
-                    key={stock}
                     outline
                     color="secondary"
-                    onClick={toggle}
+                    onClick={() => handleInfo(stock)}
                   >
                     Info
                   </Button>
-                  <Modal key={stock} isOpen={modal} toggle={toggle}>
-                    <ModalHeader key={stock} toggle={toggle}>
-                      Information
-                    </ModalHeader>
-                    <ModalBody key={stock}>
-                      {stock.symbol}
-                      <br></br>
-                      <br></br>
-                      {stock.description}
-                      <br></br>
-                      <br></br>
-                      Price: ${stock.historical[0].open}
-                    </ModalBody>
-                  </Modal>
+
                 </ButtonGroup>
               </ListGroupItem>
             ))}
+            {stockInfo ? (
+              <Modal isOpen={modal} toggle={toggle}>
+                <ModalHeader id="modalHeader">
+                  Information
+                  </ModalHeader>
+                <ModalBody >
+                  {stockInfo.symbol}
+                  <br></br>
+                  <br></br>
+                  {stockInfo.description}
+                  <br></br>
+                  <br></br>
+                    Price: ${stockInfo.historical[0].open}
+                </ModalBody>
+              </Modal>) : null
+            }
           </ListGroup>
           <ButtonGroup id="underButtons">
             <Button

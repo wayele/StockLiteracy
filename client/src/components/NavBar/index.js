@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Nav, NavItem, ButtonGroup, Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import "./style.css";
-import API from "../../utils/API";
+// import API from "../../utils/API";
 
 function NavBar() {
 
@@ -10,13 +10,13 @@ function NavBar() {
     setModal(!modal);
   };
 
-  const logoutUser = (event) =>{
-    event.preventDefault();
-    API.logout(res=>{
-      console.log(res)
-      window.location = '/landing'
-    })
-  }
+  // const logoutUser = (event) =>{
+  //   event.preventDefault();
+  //   API.logout(res=>{
+  //     console.log(res)
+  //     window.location = '/landing'
+  //   })
+  // }
 
   return (
     <div>
@@ -54,7 +54,7 @@ function NavBar() {
         <NavItem>
           <a>
 
-            <Button onClick={logoutUser} outline color="light" id="navBtns">Log Out</Button>
+            <Button href='/' outline color="light" id="navBtns">Log Out</Button>
           </a>
         </NavItem>
         </ButtonGroup>

@@ -2,13 +2,8 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./components/LoginForm";
 import Signup from "./components/SignupForm";
-// import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
-// import Nav from "./components/Nav";
 import Landing from "./pages/Landing";
-
-// Jason's edits for now: comment out all of returned JSX, render page 'Main' components working on
-// import them here:
 import Dashboard from "./pages/Dashboard";
 import Education from "./pages/Education";
 import './App.css';

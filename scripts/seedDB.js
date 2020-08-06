@@ -12,7 +12,7 @@ mongoose.connect(
 
 const transformedStocks = dataSeed.map((ds) => {
 
-    const performance = ds.historical[11].close - ds.historical[0].open;
+    const performance = ds.historical[11].close - ds.historical[0].close;
     return {
         ...ds,
         performance,
