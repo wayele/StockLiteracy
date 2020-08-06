@@ -48,9 +48,8 @@ router.get("/populated", (req, res) => {
 
 router.get("/logout", (req, res) => {
     console.log("Logout user")
-    User.find({ _id: req.user._id })
     req.logout();
-    res.redirect('/')
+    res.json({ success: true })
 })
 
 
