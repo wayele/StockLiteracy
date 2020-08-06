@@ -14,6 +14,7 @@ function NavBar() {
     event.preventDefault();
     API.logout(res=>{
       console.log(res)
+      window.location = '/landing'
     })
   }
 
