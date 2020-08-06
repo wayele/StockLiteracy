@@ -24,9 +24,16 @@ box-shadow: inset 0 0 2.5px 2px rgba(0,0,0,0.5);
 
 #chartCont{
     height: 65vh;
-    margin-left: 5px;
+    /* margin-left: 5px; */
     background-color: white;
+
     }
+
+.chartParent{
+        height: 65vh;
+        /* margin-left: 5px; */
+        background-color: white;
+}
     
 #buyBtn{
 font-size: 12px;
@@ -37,6 +44,7 @@ font-size: 12px;
 #underButtons{
     background-color: white;
    border-radius: 4px;
+   margin-bottom: 2px;
 }
 
 #scoreBadgeDiv {

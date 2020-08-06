@@ -11,6 +11,7 @@ import {
   ModalBody,
   Jumbotron,
   Container,
+  Card
 } from "reactstrap";
 import "./style.css";
 import API from "../../utils/API";
@@ -36,6 +37,8 @@ function StockList(props) {
     console.log("TOGGLE:" + props);
     setModal(!modal);
   };
+
+
   // CSS for shadow effect on card
   const well = {
     boxShadow: "3px 3px 3px #9E9E9E",
@@ -172,55 +175,57 @@ function StockList(props) {
           </ButtonGroup>
         </Col>
         <Col lg="9" xs="12" md="9" s="12">
-          <Jumbotron id="chartCont">
-            <div className="chart">
-              {chartData[0] && (
-                <Line id="chart"
-                  data={{
-                    datasets: chartData.map((c) => ({
-                      label: c.symbol,
-                      data: c.historical.map((h) => h.close),
-                      fill: false,
-                      borderColor:
-                        "#" +
-                        (0x1000000 + Math.random() * 0xffffff)
-                          .toString(16)
-                          .substr(1, 6),
-                      backgroundColor: "rgba(146, 126, 120, 0.87)",
-                    })),
-                    labels: [
-                      "Jan",
-                      "Feb",
-                      "Mar",
-                      "Apr",
-                      "May",
-                      "June",
-                      "July",
-                      "Aug",
-                      "Sep",
-                      "Oct",
-                      "Nov",
-                      "Dec",
-                    ],
-                  }}
-                  options={{
-                    title: {
-                      display: true,
-                      text: "Your Stocks",
-                      fontSize: 25,
-                    },
-                    legend: {
-                      display: true,
-                      position: "right",
-                    },
-                  }}
-                />
-              )}
-              {showScore && <div id="scoreBadgeDiv">
-                <ScoreBadge scores={scoreArray}></ScoreBadge>
-              </div>}
-            </div>
-          </Jumbotron>
+          <Card className="chartParent" style={well}>
+            <Card id="chartCont">
+              <div className="chart">
+                {chartData[0] && (
+                  <Line id="chart"
+                    data={{
+                      datasets: chartData.map((c) => ({
+                        label: c.symbol,
+                        data: c.historical.map((h) => h.close),
+                        fill: false,
+                        borderColor:
+                          "#" +
+                          (0x1000000 + Math.random() * 0xffffff)
+                            .toString(16)
+                            .substr(1, 6),
+                        backgroundColor: "rgba(146, 126, 120, 0.87)",
+                      })),
+                      labels: [
+                        "Jan",
+                        "Feb",
+                        "Mar",
+                        "Apr",
+                        "May",
+                        "June",
+                        "July",
+                        "Aug",
+                        "Sep",
+                        "Oct",
+                        "Nov",
+                        "Dec",
+                      ],
+                    }}
+                    options={{
+                      title: {
+                        display: true,
+                        text: "Your Stocks",
+                        fontSize: 25,
+                      },
+                      legend: {
+                        display: true,
+                        position: "right",
+                      },
+                    }}
+                  />
+                )}
+                {showScore && <div id="scoreBadgeDiv">
+                  <ScoreBadge scores={scoreArray}></ScoreBadge>
+                </div>}
+              </div>
+            </Card>
+          </Card>
         </Col>
       </Row>
     </Container>
