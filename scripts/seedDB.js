@@ -6,7 +6,7 @@ const lessons = require("./lessonsSeed");
 
 mongoose.connect(
     process.env.MONGODB_URI ||
-    "mongodb://localhost/stocklit"
+    "mongodb://heroku_7zxx3ffc:2hne8u9d2v88e5tb06nh0a4582@ds143231.mlab.com:43231/heroku_7zxx3ffc"
 );
 
 
