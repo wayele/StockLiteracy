@@ -21,9 +21,11 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/stocklit")
-  .then(() => console.log("MongodB connected successfully"))
-  .catch(err => console.log(err));
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/stocklit")
+//   .then(() => console.log("MongodB connected successfully"))
+//   .catch(err => console.log(err));
+mongoose.connect(process.env.MONGODB_URI || "mongodb://heroku_7zxx3ffc:2hne8u9d2v88e5tb06nh0a4582@ds143231.mlab.com:43231/heroku_7zxx3ffc");
+
 
 // Start the API server
 app.listen(PORT, function () {
