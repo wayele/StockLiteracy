@@ -4,7 +4,7 @@
 StockLiteracy is meant to help a user get a feel for how the stock market works. You can look into stock information, with history about a company. There is up-to-date market information on a video stream. And there's a gamified element for choosing stocks. Immediately upon clicking a button, a user can choose stocks and see the year-long consequences, the ups and downs, of that stock choice.
 
 ## Demo
-![https://giphy.com/gifs/S9XO8T8sUtM9HO0e9j](https://giphy.com/gifs/S9XO8T8sUtM9HO0e9j)
+![](./stocklitVIDEO.gif)
 
 ### Table of Contents
 1. [Installation](#installation)
@@ -28,4 +28,4 @@ Contributors should follow the [Contributor Covenant](https://www.contributor-co
 ### Tests
 There are currently no tests for this app. 
 ### Questions
-If you have any questions please contact: [Wub Ayele](https://github.com/wayele), [Erik Donovan](https://github.com/ErikDono), [Austin-Ricketts](https://github.com/Austin-Ricketts), or [Jason Stevens](https://github.com/jasonstevens13).
+If you have any questions please contact: [Wub Ayele](https://github.com/wayele), [Erik Donovan](https://github.com/ErikDono), [Austin-Ricketts](https://github.com/Austin-Ricketts), or [Jason Stevens](https://github.com/jasonstevens13)
